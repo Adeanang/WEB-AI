@@ -1,14 +1,14 @@
-# SiTabung AI — Sistem Tabungan Siswa Berbasis Artificial Intelligence (AI)
+# SiTabung AI  Sistem Tabungan Siswa Berbasis AI
 
 Aplikasi web **full-stack** untuk membantu pencatatan, pengelolaan, dan analisis tabungan siswa secara digital.
 SiTabung AI memiliki fitur **OCR berbasis AI** yang dapat membaca foto buku tabungan secara otomatis sehingga transaksi dapat dicatat lebih cepat dan akurat.
 
-🌐 **Demo Aplikasi:**
+ **Demo Aplikasi:**
 https://web-ai-three-theta.vercel.app
 
 ---
 
-## 🏗️ Tech Stack
+##  Tech Stack
 
 | Layer      | Teknologi                                  |
 | ---------- | ------------------------------------------ |
@@ -20,9 +20,9 @@ https://web-ai-three-theta.vercel.app
 
 ---
 
-# ✨ Fitur Utama
+#  Fitur Utama
 
-## 📸 AI OCR Buku Tabungan
+##  AI OCR Buku Tabungan
 
 Pengguna dapat mengunggah foto buku tabungan, kemudian AI akan membaca informasi transaksi seperti:
 
@@ -36,7 +36,7 @@ Hasil pembacaan dapat langsung disimpan ke database.
 
 ---
 
-## 🤖 Chatbot AI
+##  Chatbot AI
 
 Tersedia fitur percakapan dengan AI untuk membantu pengguna mendapatkan informasi seperti:
 
@@ -47,7 +47,7 @@ Tersedia fitur percakapan dengan AI untuk membantu pengguna mendapatkan informas
 
 ---
 
-## 📊 Rekap Tabungan Kelas
+##  Rekap Tabungan Kelas
 
 Menampilkan data seluruh siswa:
 
@@ -60,7 +60,7 @@ Data diperbarui secara real-time dari database.
 
 ---
 
-## 🧠 Analisis AI
+##  Analisis AI
 
 AI dapat membuat analisis otomatis mengenai kondisi tabungan kelas, contohnya:
 
@@ -70,7 +70,7 @@ AI dapat membuat analisis otomatis mengenai kondisi tabungan kelas, contohnya:
 
 ---
 
-## ✍️ Input Manual Transaksi
+##  Input Manual Transaksi
 
 Selain menggunakan OCR, pengguna dapat menambahkan transaksi secara manual:
 
@@ -80,7 +80,7 @@ Selain menggunakan OCR, pengguna dapat menambahkan transaksi secara manual:
 
 ---
 
-## 🗑️ Manajemen Data
+##  Manajemen Data
 
 Tersedia fitur:
 
@@ -90,7 +90,7 @@ Tersedia fitur:
 
 ---
 
-## 📥 Export Data
+##  Export Data
 
 Rekap tabungan dapat diekspor dalam bentuk CSV untuk:
 
@@ -100,7 +100,7 @@ Rekap tabungan dapat diekspor dalam bentuk CSV untuk:
 
 ---
 
-## 📱 Responsive Design
+##  Responsive Design
 
 Tampilan aplikasi sudah menyesuaikan berbagai perangkat:
 
@@ -110,7 +110,7 @@ Tampilan aplikasi sudah menyesuaikan berbagai perangkat:
 
 ---
 
-# 🚀 Cara Menjalankan Project
+#  Cara Menjalankan Project
 
 ## 1. Clone Repository
 
@@ -219,7 +219,7 @@ http://localhost:3000
 
 ---
 
-# ☁️ Deployment Vercel
+#  Deployment Vercel
 
 Install Vercel CLI:
 
@@ -257,7 +257,7 @@ vercel --prod
 
 ---
 
-# 📁 Struktur Project
+#  Struktur Project
 
 ```
 sitabung-ai/
@@ -285,7 +285,7 @@ sitabung-ai/
 
 ---
 
-# 🔌 API Endpoint
+#  API Endpoint
 
 | Method | Endpoint              | Fungsi                  |
 | ------ | --------------------- | ----------------------- |
@@ -301,7 +301,7 @@ sitabung-ai/
 
 ---
 
-# 🧑‍🎓 Data Siswa
+#  Data Siswa
 
 Aplikasi sudah menggunakan data siswa yang tersimpan pada database Supabase.
 
@@ -313,7 +313,7 @@ schema.sql
 
 ---
 
-# 🛠️ Troubleshooting
+#  Troubleshooting
 
 | Kendala                   | Solusi                                   |
 | ------------------------- | ---------------------------------------- |
@@ -325,7 +325,7 @@ schema.sql
 
 ---
 
-# 🤖 AI Engine
+#  AI Engine
 
 Sistem menggunakan Google Gemini Flash sebagai engine AI untuk:
 
@@ -338,7 +338,7 @@ AI terintegrasi melalui API sehingga proses dapat berjalan langsung dari aplikas
 
 ---
 
-## 🎯 Tujuan Sistem
+##  Tujuan Sistem
 
 SiTabung AI dibuat untuk membantu guru atau pengelola kelas dalam:
 
