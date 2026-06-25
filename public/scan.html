@@ -45,10 +45,9 @@
     .nav-link span.nav-label { display:inline; }
     #sidebar-overlay { display:none; }
 
-    @media (max-width: 768px) {
+   @media (max-width: 768px) {
       .app-layout { grid-template-columns: 1fr; }
 
-      /* sidebar becomes an off-canvas drawer */
       #santri-sidebar {
         position: fixed;
         top: 56px;
@@ -70,6 +69,11 @@
         background: rgba(0,0,0,.4);
         z-index: 55;
       }
+    }
+
+    @media (max-width: 480px) {
+      .nav-link { padding-left:.55rem; padding-right:.55rem; }
+      .nav-link span.nav-label { display:none; }
     }
   </style>
 </head>
