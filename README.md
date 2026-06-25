@@ -1,126 +1,255 @@
-# SiTabung AI — Sistem Tabungan Siswa Berbasis AI
+# SiTabung AI — Sistem Tabungan Siswa Berbasis Artificial Intelligence (AI)
 
-Aplikasi web full-stack untuk pencatatan tabungan siswa dengan fitur OCR foto buku tabungan menggunakan **Gemini 3.5 Flash** (model terbaru Google AI).
+Aplikasi web **full-stack** untuk membantu pencatatan, pengelolaan, dan analisis tabungan siswa secara digital.
+SiTabung AI memiliki fitur **OCR berbasis AI** yang dapat membaca foto buku tabungan secara otomatis sehingga transaksi dapat dicatat lebih cepat dan akurat.
+
+🌐 **Demo Aplikasi:**
+https://web-ai-three-theta.vercel.app
 
 ---
 
 ## 🏗️ Tech Stack
 
-| Layer | Teknologi |
-|---|---|
-| **Frontend** | HTML + Tailwind CSS (CDN) + Vanilla JS |
-| **Backend** | Node.js + Express |
-| **Database** | PostgreSQL via **Supabase** |
-| **AI / OCR** | Google Gemini **3.5 Flash** |
-| **Deploy** | **Vercel** (backend sebagai Serverless Functions) |
+| Layer      | Teknologi                                  |
+| ---------- | ------------------------------------------ |
+| Frontend   | HTML, Tailwind CSS CDN, Vanilla JavaScript |
+| Backend    | Node.js + Express.js                       |
+| Database   | PostgreSQL menggunakan Supabase            |
+| AI / OCR   | Google Gemini Flash API                    |
+| Deployment | Vercel Serverless Functions                |
 
 ---
 
-## ✨ Fitur Utama
+# ✨ Fitur Utama
 
-- 📸 **OCR Foto** — Upload foto buku tabungan, AI baca otomatis semua transaksi
-- 💬 **Chatbot AI** — Tanya langsung ke AI seputar data tabungan kelas
-- 📊 **Rekap Kelas** — Tabel rekap semua 21 siswa dengan saldo real-time
-- 🤖 **Analisis AI** — Gemini buat ringkasan kondisi tabungan kelas
-- ➕ **Input Manual** — Tambah transaksi tanpa scan foto
-- 🗑️ **Hapus Transaksi** — Edit dan koreksi data
-- 📥 **Export CSV** — Download rekap ke spreadsheet
-- 🟢 **Status Koneksi** — Indikator real-time koneksi ke server
+## 📸 AI OCR Buku Tabungan
+
+Pengguna dapat mengunggah foto buku tabungan, kemudian AI akan membaca informasi transaksi seperti:
+
+* Nama siswa
+* Tanggal transaksi
+* Jenis transaksi
+* Nominal uang masuk/keluar
+* Saldo akhir
+
+Hasil pembacaan dapat langsung disimpan ke database.
 
 ---
 
-## 🚀 Cara Setup (Langkah demi Langkah)
+## 🤖 Chatbot AI
 
-### 1. Clone & Install
+Tersedia fitur percakapan dengan AI untuk membantu pengguna mendapatkan informasi seperti:
+
+* Total tabungan kelas
+* Siswa dengan saldo tertinggi
+* Ringkasan kondisi tabungan
+* Informasi transaksi tertentu
+
+---
+
+## 📊 Rekap Tabungan Kelas
+
+Menampilkan data seluruh siswa:
+
+* Nama siswa
+* NIS
+* Total saldo
+* Riwayat transaksi
+
+Data diperbarui secara real-time dari database.
+
+---
+
+## 🧠 Analisis AI
+
+AI dapat membuat analisis otomatis mengenai kondisi tabungan kelas, contohnya:
+
+* Rata-rata tabungan siswa
+* Perbandingan jumlah saldo
+* Saran pengelolaan tabungan
+
+---
+
+## ✍️ Input Manual Transaksi
+
+Selain menggunakan OCR, pengguna dapat menambahkan transaksi secara manual:
+
+* Setoran
+* Penarikan
+* Koreksi transaksi
+
+---
+
+## 🗑️ Manajemen Data
+
+Tersedia fitur:
+
+* Menghapus transaksi
+* Memperbaiki data
+* Melihat detail transaksi siswa
+
+---
+
+## 📥 Export Data
+
+Rekap tabungan dapat diekspor dalam bentuk CSV untuk:
+
+* Laporan sekolah
+* Dokumentasi
+* Pengolahan spreadsheet
+
+---
+
+## 📱 Responsive Design
+
+Tampilan aplikasi sudah menyesuaikan berbagai perangkat:
+
+* Desktop
+* Tablet
+* Smartphone
+
+---
+
+# 🚀 Cara Menjalankan Project
+
+## 1. Clone Repository
 
 ```bash
 git clone https://github.com/username/sitabung-ai.git
+
 cd sitabung-ai
+
 npm install
 ```
 
-### 2. Buat Project Supabase
+---
 
-1. Buka [supabase.com](https://supabase.com) → **New Project**
-2. Isi nama project: `sitabung-ai`, pilih region terdekat (Singapore)
-3. Tunggu project selesai dibuat (~2 menit)
-4. Buka **SQL Editor** → **New Query**
-5. Copy-paste isi file `schema.sql` → klik **Run**
-6. Pastikan muncul pesan "Success. No rows returned"
+# 2. Konfigurasi Database Supabase
 
-### 3. Ambil Credentials Supabase
+Buat project baru di Supabase:
 
-Di dashboard Supabase: **Settings → API**
+1. Masuk ke dashboard Supabase
+2. Buat project baru
+3. Buka menu SQL Editor
+4. Jalankan file:
 
-- **Project URL** → copy ke `SUPABASE_URL`
-- **service_role** key (bukan anon!) → copy ke `SUPABASE_SERVICE_KEY`
-
-### 4. Buat API Key Gemini
-
-1. Buka [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
-2. Klik **Create API Key**
-3. Copy key → simpan ke `GEMINI_API_KEY`
-
-> ✅ Gemini 3.5 Flash tersedia **gratis** dengan rate limit yang cukup untuk penggunaan kelas.
-
-### 5. Setup Environment Variables
-
-```bash
-cp .env.example .env
+```
+schema.sql
 ```
 
-Edit file `.env`:
+Database akan otomatis membuat tabel yang diperlukan.
+
+---
+
+# 3. Konfigurasi API Supabase
+
+Ambil data:
+
+```
+Settings → API
+```
+
+Kemudian simpan:
+
+```
+SUPABASE_URL
+
+SUPABASE_SERVICE_KEY
+```
+
+Gunakan key:
+
+```
+service_role
+```
+
+---
+
+# 4. Konfigurasi Gemini AI
+
+Buat API Key melalui Google AI Studio.
+
+Simpan:
+
+```
+GEMINI_API_KEY
+```
+
+API digunakan untuk:
+
+* OCR gambar
+* Analisis data
+* Chatbot AI
+
+---
+
+# 5. Environment Variable
+
+Buat file:
+
+```
+.env
+```
+
+Isi:
 
 ```env
-SUPABASE_URL=https://xxxxxxxxxxxxxxxx.supabase.co
-SUPABASE_SERVICE_KEY=eyJhbGci...
-GEMINI_API_KEY=AIzaSy...
+SUPABASE_URL=https://xxxxx.supabase.co
+
+SUPABASE_SERVICE_KEY=xxxxx
+
+GEMINI_API_KEY=xxxxx
+
 PORT=3000
 ```
 
-### 6. Jalankan Lokal
+---
+
+# 6. Jalankan Lokal
 
 ```bash
 npm run dev
 ```
 
-Buka browser → [http://localhost:3000](http://localhost:3000)
+Akses:
+
+```
+http://localhost:3000
+```
 
 ---
 
-## ☁️ Deploy ke Vercel
+# ☁️ Deployment Vercel
 
-### Persiapan
+Install Vercel CLI:
 
 ```bash
 npm install -g vercel
+```
+
+Login:
+
+```bash
 vercel login
 ```
 
-### Deploy
+Deploy:
 
 ```bash
 vercel
 ```
 
-Ikuti prompt:
-- **Set up and deploy?** → Y
-- **Which scope?** → pilih akun kamu
-- **Link to existing project?** → N
-- **Project name** → `sitabung-ai`
-- **Directory** → `./` (root)
-
-### Set Environment Variables di Vercel
+Tambahkan environment variable:
 
 ```bash
 vercel env add SUPABASE_URL
+
 vercel env add SUPABASE_SERVICE_KEY
+
 vercel env add GEMINI_API_KEY
 ```
 
-Atau lewat dashboard: **Vercel → Project → Settings → Environment Variables**
-
-### Deploy ulang dengan env vars
+Deploy production:
 
 ```bash
 vercel --prod
@@ -128,61 +257,96 @@ vercel --prod
 
 ---
 
-## 📁 Struktur Project
+# 📁 Struktur Project
 
 ```
 sitabung-ai/
+
 ├── api/
-│   └── server.js          # Backend Express (Vercel Serverless)
+│   └── server.js
+
 ├── public/
-│   ├── index.html         # Frontend utama (Tailwind CSS)
+│   ├── index.html
+│   ├── scan.html
+│   ├── rekap.html
+│   ├── siswa.html
+│   │
 │   └── js/
-│       └── app.js         # JavaScript frontend
-├── schema.sql             # Schema + seed data Supabase
-├── vercel.json            # Konfigurasi routing Vercel
+│       ├── shared.js
+│       ├── scan.js
+│       ├── rekap.js
+│       └── siswa.js
+
+├── schema.sql
 ├── package.json
-├── .env.example
-└── README.md
+├── vercel.json
+└── .env.example
 ```
 
 ---
 
-## 🔌 API Endpoints
+# 🔌 API Endpoint
 
-| Method | Endpoint | Deskripsi |
-|---|---|---|
-| `GET` | `/api/siswa` | Semua siswa + saldo rekap |
-| `GET` | `/api/siswa/:nis` | Detail satu siswa |
-| `GET` | `/api/transaksi/:nis` | Riwayat transaksi siswa |
-| `POST` | `/api/transaksi` | Tambah transaksi manual |
-| `POST` | `/api/transaksi/bulk` | Simpan banyak transaksi (hasil OCR) |
-| `DELETE` | `/api/transaksi/:id` | Hapus transaksi |
-| `POST` | `/api/ai/ocr` | OCR foto buku tabungan (multipart) |
-| `POST` | `/api/ai/chat` | Tanya AI tentang rekap kelas |
-| `POST` | `/api/ai/analisis` | Generate analisis kelas otomatis |
-
----
-
-## 🧑‍🎓 Data Kelas
-
-Aplikasi sudah terisi data **21 siswa Kelas Pak Anang** (NIS 25001–25021). Data dimasukkan otomatis lewat `schema.sql` saat setup Supabase.
+| Method | Endpoint              | Fungsi                  |
+| ------ | --------------------- | ----------------------- |
+| GET    | `/api/siswa`          | Menampilkan semua siswa |
+| GET    | `/api/siswa/:nis`     | Detail siswa            |
+| GET    | `/api/transaksi/:nis` | Riwayat transaksi       |
+| POST   | `/api/transaksi`      | Tambah transaksi        |
+| POST   | `/api/transaksi/bulk` | Simpan hasil OCR        |
+| DELETE | `/api/transaksi/:id`  | Hapus transaksi         |
+| POST   | `/api/ai/ocr`         | Proses OCR AI           |
+| POST   | `/api/ai/chat`        | Chatbot AI              |
+| POST   | `/api/ai/analisis`    | Analisis tabungan       |
 
 ---
 
-## 🛠️ Troubleshooting
+# 🧑‍🎓 Data Siswa
 
-| Masalah | Solusi |
-|---|---|
-| Dot koneksi merah | Cek `.env` sudah benar, server berjalan |
-| OCR error | Pastikan GEMINI_API_KEY valid dan foto cukup jelas |
-| Data tidak tersimpan | Cek SUPABASE_SERVICE_KEY (harus `service_role`, bukan `anon`) |
-| 404 di Vercel | Pastikan `vercel.json` ada dan benar |
+Aplikasi sudah menggunakan data siswa yang tersimpan pada database Supabase.
+
+Data dapat disesuaikan melalui:
+
+```
+schema.sql
+```
 
 ---
 
-## 📝 Model AI
+# 🛠️ Troubleshooting
 
-Model: **`gemini-3.5-flash`** (Google DeepMind, 2026)
+| Kendala                   | Solusi                                   |
+| ------------------------- | ---------------------------------------- |
+| Server tidak terhubung    | Cek environment variable                 |
+| OCR gagal                 | Pastikan API Gemini aktif dan foto jelas |
+| Data tidak masuk database | Pastikan memakai SUPABASE_SERVICE_KEY    |
+| Error deploy Vercel       | Periksa konfigurasi vercel.json          |
+| Tampilan mobile rusak     | Update file frontend terbaru             |
 
-> Pengganti resmi dari `gemini-2.0-flash` yang sudah ditutup permanen pada 1 Juni 2026.
-> Gemini 3.5 Flash lebih cepat, lebih akurat, dan tetap tersedia gratis via Google AI Studio.
+---
+
+# 🤖 AI Engine
+
+Sistem menggunakan Google Gemini Flash sebagai engine AI untuk:
+
+* Membaca gambar buku tabungan
+* Mengekstrak transaksi
+* Membuat analisis
+* Menjawab pertanyaan pengguna
+
+AI terintegrasi melalui API sehingga proses dapat berjalan langsung dari aplikasi web.
+
+---
+
+## 🎯 Tujuan Sistem
+
+SiTabung AI dibuat untuk membantu guru atau pengelola kelas dalam:
+
+* Digitalisasi pencatatan tabungan siswa
+* Mengurangi kesalahan pencatatan manual
+* Mempermudah monitoring saldo
+* Membuat laporan tabungan secara otomatis
+
+---
+
+© 2026 SiTabung AI
