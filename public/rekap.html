@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>SiTabung AI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
@@ -36,96 +36,105 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
     .fade-up{animation:fadeUp .2s ease-out}
     .bg-pattern{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%231B6B45' stroke-width='.4' opacity='0.03'%3E%3Cpolygon points='30,5 55,20 55,40 30,55 5,40 5,20'/%3E%3Cpolygon points='30,15 45,23 45,37 30,45 15,37 15,23'/%3E%3C/g%3E%3C/svg%3E");background-size:60px 60px}
+
+    /* ── Mobile fixes ───────────────────────────────────────── */
+    .brand-text { display:inline; }
+    .nav-link span.nav-label { display:inline; }
+    @media (max-width: 480px) {
+      .brand-text { display:none; }
+      .nav-link { padding-left:.55rem; padding-right:.55rem; }
+      .nav-link span.nav-label { display:none; }
+    }
   </style>
 </head>
 <body class="bg-forest-50 text-gray-900 min-h-screen">
 
 <header class="sticky top-0 z-50 bg-forest-700 shadow-lg">
-  <div class="flex items-center justify-between px-4 h-14">
+  <div class="flex items-center justify-between gap-2 px-3 sm:px-4 h-14">
 
     <!-- Logo + Brand -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-shrink-0">
       <img
         src="logo2.png"
         alt="SiTabung AI"
-        class="w-10 h-10 object-contain">
+        class="w-8 h-8 sm:w-10 sm:h-10 object-contain flex-shrink-0">
 
-      <span class="text-white font-bold text-base tracking-tight">
+      <span class="brand-text text-white font-bold text-sm sm:text-base tracking-tight whitespace-nowrap">
         SiTabung AI
       </span>
     </div>
 
     <!-- Menu -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
       <nav class="flex gap-1">
-        <a href="scan.html" class="nav-link flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all">
+        <a href="scan.html" class="nav-link flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold border transition-all">
           <i class="ti ti-message-circle text-sm"></i>
-          <span class="hidden sm:inline">Scan Tabungan</span>
+          <span class="nav-label hidden sm:inline">Scan Tabungan</span>
         </a>
 
-        <a href="rekap.html" class="nav-link flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all">
+        <a href="rekap.html" class="nav-link flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold border transition-all">
           <i class="ti ti-chart-bar text-sm"></i>
-          <span class="hidden sm:inline">Rekap Tabungan</span>
+          <span class="nav-label hidden sm:inline">Rekap Tabungan</span>
         </a>
 
-        <a href="siswa.html" class="nav-link flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all">
+        <a href="siswa.html" class="nav-link flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold border transition-all">
           <i class="ti ti-users text-sm"></i>
-          <span class="hidden sm:inline">Data Siswa</span>
+          <span class="nav-label hidden sm:inline">Data Siswa</span>
         </a>
       </nav>
 
-      <div id="conn-dot" class="w-2 h-2 rounded-full bg-yellow-400 ml-1"></div>
+      <div id="conn-dot" class="w-2 h-2 rounded-full bg-yellow-400 ml-0.5 sm:ml-1 flex-shrink-0"></div>
     </div>
 
   </div>
 </header>
 
 <!-- CONTENT -->
-<div class="p-6 bg-forest-50 bg-pattern min-h-[calc(100vh-56px)]">
+<div class="p-3 sm:p-6 bg-forest-50 bg-pattern min-h-[calc(100vh-56px)]">
 
-  <div class="flex items-start justify-between mb-6 flex-wrap gap-3">
-    <div>
-      <h1 class="text-xl font-bold text-gray-900 tracking-tight">Rekap Tabungan</h1>
-      <p id="rekap-sub" class="text-sm text-gray-500 mt-0.5">memuat...</p>
+  <div class="flex items-start justify-between mb-4 sm:mb-6 flex-wrap gap-3">
+    <div class="min-w-0">
+      <h1 class="text-lg sm:text-xl font-bold text-gray-900 tracking-tight">Rekap Tabungan</h1>
+      <p id="rekap-sub" class="text-xs sm:text-sm text-gray-500 mt-0.5">memuat...</p>
     </div>
-    <div class="flex gap-2 flex-wrap">
+    <div class="flex gap-2 flex-wrap w-full sm:w-auto">
       <button onclick="exportCSV()"
-        class="flex items-center gap-2 bg-white border border-forest-200 hover:bg-forest-50 text-gray-700 text-sm font-semibold px-4 py-2 rounded-xl transition-colors shadow-card">
-        <i class="ti ti-download text-base"></i> Export CSV
+        class="flex items-center justify-center gap-2 bg-white border border-forest-200 hover:bg-forest-50 text-gray-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl transition-colors shadow-card flex-1 sm:flex-none">
+        <i class="ti ti-download text-base"></i> <span class="whitespace-nowrap">Export CSV</span>
       </button>
       <button onclick="aiAnalyze()"
-        class="flex items-center gap-2 bg-gold-400 hover:bg-yellow-500 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors shadow-card">
-        <i class="ti ti-robot text-base"></i> Analisis AI
+        class="flex items-center justify-center gap-2 bg-gold-400 hover:bg-yellow-500 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl transition-colors shadow-card flex-1 sm:flex-none">
+        <i class="ti ti-robot text-base"></i> <span class="whitespace-nowrap">Analisis AI</span>
       </button>
     </div>
   </div>
 
   <!-- Stat cards -->
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-    <div class="bg-white border border-forest-100 rounded-2xl p-4 shadow-card hover:-translate-y-0.5 transition-transform">
-      <div class="w-9 h-9 bg-forest-100 text-forest-600 rounded-xl flex items-center justify-center text-lg mb-3"><i class="ti ti-users"></i></div>
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Siswa</p>
-      <p id="st-siswa" class="text-2xl font-bold text-gray-900">–</p>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-5 sm:mb-6">
+    <div class="bg-white border border-forest-100 rounded-2xl p-3 sm:p-4 shadow-card hover:-translate-y-0.5 transition-transform">
+      <div class="w-8 h-8 sm:w-9 sm:h-9 bg-forest-100 text-forest-600 rounded-xl flex items-center justify-center text-base sm:text-lg mb-2 sm:mb-3"><i class="ti ti-users"></i></div>
+      <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Siswa</p>
+      <p id="st-siswa" class="text-xl sm:text-2xl font-bold text-gray-900">–</p>
     </div>
-    <div class="bg-white border border-forest-100 rounded-2xl p-4 shadow-card hover:-translate-y-0.5 transition-transform">
-      <div class="w-9 h-9 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-lg mb-3"><i class="ti ti-cash"></i></div>
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Saldo</p>
-      <p id="st-saldo" class="text-lg font-bold text-gray-900">–</p>
+    <div class="bg-white border border-forest-100 rounded-2xl p-3 sm:p-4 shadow-card hover:-translate-y-0.5 transition-transform">
+      <div class="w-8 h-8 sm:w-9 sm:h-9 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-base sm:text-lg mb-2 sm:mb-3"><i class="ti ti-cash"></i></div>
+      <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Saldo</p>
+      <p id="st-saldo" class="text-base sm:text-lg font-bold text-gray-900 truncate">–</p>
     </div>
-    <div class="bg-white border border-forest-100 rounded-2xl p-4 shadow-card hover:-translate-y-0.5 transition-transform">
-      <div class="w-9 h-9 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-lg mb-3"><i class="ti ti-trending-up"></i></div>
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Setor</p>
-      <p id="st-setor" class="text-lg font-bold text-gray-900">–</p>
+    <div class="bg-white border border-forest-100 rounded-2xl p-3 sm:p-4 shadow-card hover:-translate-y-0.5 transition-transform">
+      <div class="w-8 h-8 sm:w-9 sm:h-9 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-base sm:text-lg mb-2 sm:mb-3"><i class="ti ti-trending-up"></i></div>
+      <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Setor</p>
+      <p id="st-setor" class="text-base sm:text-lg font-bold text-gray-900 truncate">–</p>
     </div>
-    <div class="bg-white border border-forest-100 rounded-2xl p-4 shadow-card hover:-translate-y-0.5 transition-transform">
-      <div class="w-9 h-9 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-lg mb-3"><i class="ti ti-trending-down"></i></div>
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Tarik</p>
-      <p id="st-tarik" class="text-lg font-bold text-gray-900">–</p>
+    <div class="bg-white border border-forest-100 rounded-2xl p-3 sm:p-4 shadow-card hover:-translate-y-0.5 transition-transform">
+      <div class="w-8 h-8 sm:w-9 sm:h-9 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-base sm:text-lg mb-2 sm:mb-3"><i class="ti ti-trending-down"></i></div>
+      <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Tarik</p>
+      <p id="st-tarik" class="text-base sm:text-lg font-bold text-gray-900 truncate">–</p>
     </div>
   </div>
 
   <!-- AI Analysis box -->
-  <div id="ai-box" class="hidden mb-5 bg-gradient-to-br from-forest-50 to-gold-50 border border-forest-200 rounded-2xl p-5 shadow-card fade-up">
+  <div id="ai-box" class="hidden mb-5 bg-gradient-to-br from-forest-50 to-gold-50 border border-forest-200 rounded-2xl p-4 sm:p-5 shadow-card fade-up">
     <div class="flex items-center gap-2 mb-3">
       <i class="ti ti-robot text-forest-600 text-lg"></i>
       <span class="font-bold text-sm text-gray-800">Analisis AI Gemini</span>
@@ -136,14 +145,14 @@
 
   <!-- Search & Sort -->
   <div class="flex gap-3 mb-4 flex-wrap">
-    <div class="relative flex-1 min-w-48">
+    <div class="relative flex-1 min-w-[140px] sm:min-w-48">
       <i class="ti ti-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
       <input id="rekap-search" type="text" placeholder="Cari nama atau NIS…"
         oninput="renderRekap()"
         class="w-full pl-9 pr-3 py-2.5 border border-forest-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-forest-500/20 focus:border-forest-400 bg-white">
     </div>
     <select id="rekap-sort" onchange="renderRekap()"
-      class="border border-forest-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest-500/20 focus:border-forest-400">
+      class="border border-forest-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest-500/20 focus:border-forest-400 flex-shrink-0">
       <option value="no">Urut: No</option>
       <option value="nama">Urut: Nama</option>
       <option value="saldo-desc">Saldo Tertinggi</option>
@@ -154,18 +163,18 @@
 
   <!-- Table -->
   <div class="bg-white border border-forest-100 rounded-2xl shadow-card overflow-hidden">
-    <div class="overflow-x-auto">
-      <table class="w-full">
+    <div class="overflow-x-auto -webkit-overflow-scrolling-touch">
+      <table class="w-full min-w-[760px]">
         <thead class="bg-forest-50 border-b border-forest-100">
           <tr>
-            <th class="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">No</th>
-            <th class="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">NIS</th>
-            <th class="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Nama Siswa</th>
-            <th class="text-right px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Total Setor</th>
-            <th class="text-right px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Total Tarik</th>
-            <th class="text-right px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Saldo</th>
-            <th class="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Update</th>
-            <th class="px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Aksi</th>
+            <th class="text-left px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">No</th>
+            <th class="text-left px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">NIS</th>
+            <th class="text-left px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Nama Siswa</th>
+            <th class="text-right px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Total Setor</th>
+            <th class="text-right px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Total Tarik</th>
+            <th class="text-right px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Saldo</th>
+            <th class="text-left px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Update</th>
+            <th class="px-3 sm:px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Aksi</th>
           </tr>
         </thead>
         <tbody id="rekap-tbody" class="divide-y divide-forest-50">
@@ -174,17 +183,18 @@
       </table>
     </div>
   </div>
+  <p class="text-[11px] text-gray-400 mt-2 sm:hidden">Geser tabel ke kanan untuk lihat semua kolom →</p>
 </div>
 
 <!-- MODAL: RIWAYAT TRANSAKSI -->
 <div id="modal-trx" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-  <div class="bg-white rounded-2xl w-full max-w-lg shadow-card-lg border border-forest-100 fade-up">
-    <div class="flex items-center justify-between px-5 py-4 border-b border-forest-100 bg-forest-50 rounded-t-2xl">
+  <div class="bg-white rounded-2xl w-full max-w-lg shadow-card-lg border border-forest-100 fade-up max-h-[90vh] flex flex-col">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-forest-100 bg-forest-50 rounded-t-2xl flex-shrink-0">
       <h3 id="modal-trx-title" class="font-bold text-sm text-gray-800">Riwayat Transaksi</h3>
       <button onclick="closeModal('modal-trx')" class="text-gray-400 hover:text-gray-700 transition-colors"><i class="ti ti-x text-lg"></i></button>
     </div>
-    <div id="modal-trx-body" class="p-5 max-h-[60vh] overflow-y-auto scrollbar-thin"></div>
-    <div class="flex gap-2 justify-end px-5 py-4 border-t border-forest-100 bg-forest-50 rounded-b-2xl">
+    <div id="modal-trx-body" class="p-5 overflow-y-auto scrollbar-thin flex-1"></div>
+    <div class="flex gap-2 justify-end px-5 py-4 border-t border-forest-100 bg-forest-50 rounded-b-2xl flex-shrink-0 flex-wrap">
       <button onclick="openAddTrx(currentTrxNis)"
         class="flex items-center gap-2 bg-forest-600 hover:bg-forest-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">
         <i class="ti ti-plus text-base"></i> Tambah Manual
@@ -196,8 +206,8 @@
 
 <!-- MODAL: TAMBAH TRANSAKSI MANUAL -->
 <div id="modal-add-trx" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-  <div class="bg-white rounded-2xl w-full max-w-sm shadow-card-lg border border-forest-100 fade-up">
-    <div class="flex items-center justify-between px-5 py-4 border-b border-forest-100 bg-forest-50 rounded-t-2xl">
+  <div class="bg-white rounded-2xl w-full max-w-sm shadow-card-lg border border-forest-100 fade-up max-h-[90vh] overflow-y-auto scrollbar-thin">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-forest-100 bg-forest-50 rounded-t-2xl sticky top-0">
       <h3 class="font-bold text-sm text-gray-800">Tambah Transaksi Manual</h3>
       <button onclick="closeModal('modal-add-trx')" class="text-gray-400 hover:text-gray-700 transition-colors"><i class="ti ti-x text-lg"></i></button>
     </div>
@@ -223,7 +233,7 @@
         <input type="text" id="tx-ket" placeholder="Tabungan mingguan" class="w-full border border-forest-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500/20 focus:border-forest-400">
       </div>
     </div>
-    <div class="flex gap-2 justify-end px-5 py-4 border-t border-forest-100 bg-forest-50 rounded-b-2xl">
+    <div class="flex gap-2 justify-end px-5 py-4 border-t border-forest-100 bg-forest-50 rounded-b-2xl sticky bottom-0">
       <button onclick="closeModal('modal-add-trx')" class="border border-forest-200 hover:bg-forest-50 text-gray-700 text-sm font-semibold px-4 py-2 rounded-xl transition-colors">Batal</button>
       <button onclick="simpanTrxManual()" class="flex items-center gap-2 bg-forest-600 hover:bg-forest-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">
         <i class="ti ti-check text-base"></i> Simpan
@@ -233,7 +243,7 @@
 </div>
 
 <!-- Toast -->
-<div id="toast" class="fixed bottom-5 right-5 z-[999] hidden items-center gap-3 bg-gray-900 text-white text-sm font-semibold px-4 py-3 rounded-2xl shadow-card-lg max-w-xs fade-up">
+<div id="toast" class="fixed bottom-5 left-3 right-3 sm:left-auto sm:right-5 sm:max-w-xs z-[999] hidden items-center gap-3 bg-gray-900 text-white text-sm font-semibold px-4 py-3 rounded-2xl shadow-card-lg fade-up">
   <i id="toast-icon" class="ti ti-check text-green-400 text-base"></i>
   <span id="toast-msg">Tersimpan!</span>
 </div>
