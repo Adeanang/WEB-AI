@@ -48,9 +48,9 @@ function renderSiswa() {
         <span class="text-sm font-bold ${Number(s.saldo)>0?'text-forest-600':'text-gray-300'}">
           ${Number(s.saldo)>0?rp(s.saldo):'Rp 0'}
         </span>
-      </td>
+        </td>
       <td class="px-4 py-3 text-center">
-        <span class="text-xs px-2.5 py-1 rounded-full font-semibold ${Number(s.jumlah_transaksi)>0?'bg-forest-100 text-forest-700':'bg-gray-100 text-gray-400'}">
+        <span class="text-xs font-semibold ${Number(s.jumlah_transaksi)>0?'text-forest-700':'text-gray-400'}">
           ${s.jumlah_transaksi || 0} transaksi
         </span>
       </td>
