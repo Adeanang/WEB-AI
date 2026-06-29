@@ -220,7 +220,7 @@ async function doOcr(file) {
 
     const bubble = loading.querySelector('div[class*="bg-white"]') || loading.querySelector('div:last-child');
     bubble.innerHTML = `
-      <p class="font-semibold mb-2 text-sm">✅ Berhasil membaca buku tabungan <strong>${esc(s.nama)}</strong> — <strong>${txs.length} transaksi</strong></p>
+      <p class="font-semibold mb-2 text-sm">Berhasil membaca buku tabungan <strong>${esc(s.nama)}</strong> — <strong>${txs.length} transaksi</strong></p>
       <div class="overflow-x-auto rounded-xl border border-forest-100">
         <table class="w-full min-w-[320px]">
           <thead class="bg-forest-50">
@@ -668,7 +668,7 @@ async function konfirmasiHapusSiswa() {
   } catch(e) { showToast(e.message, 'error'); }
 }
 
-// ── Modal helpers ─────────────────────────────────────────────
+// ── Modal helpers
 function openModal(id) {
   const m = document.getElementById(id);
   m.classList.remove('hidden');

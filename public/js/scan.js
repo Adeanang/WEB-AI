@@ -138,7 +138,7 @@ async function doOcr(file) {
       </tr>`).join('');
 
     bubble.innerHTML = `
-      <p class="font-semibold mb-2 text-sm">✅ Berhasil membaca buku tabungan <strong>${esc(s.nama)}</strong> — <strong>${txs.length} transaksi</strong></p>
+      <p class="font-semibold mb-2 text-sm">Berhasil membaca buku tabungan <strong>${esc(s.nama)}</strong> — <strong>${txs.length} transaksi</strong></p>
       <div class="overflow-x-auto rounded-xl border border-forest-100">
         <table class="w-full min-w-[320px]">
           <thead class="bg-forest-50">

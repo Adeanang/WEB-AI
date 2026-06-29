@@ -36,6 +36,14 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
     .fade-up{animation:fadeUp .2s ease-out}
     .bg-pattern{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%231B6B45' stroke-width='.4' opacity='0.03'%3E%3Cpolygon points='30,5 55,20 55,40 30,55 5,40 5,20'/%3E%3Cpolygon points='30,15 45,23 45,37 30,45 15,37 15,23'/%3E%3C/g%3E%3C/svg%3E");background-size:60px 60px}
+
+    /* ── Mobile fixes ───────────────────────────────────────── */
+    .brand-text { display:inline; }
+    .nav-link span.nav-label { display:inline; }
+    @media (max-width: 480px) {
+      .nav-link { padding-left:.55rem; padding-right:.55rem; }
+      .nav-link span.nav-label { display:none; }
+    }
   </style>
 </head>
 <body class="bg-forest-50 text-gray-900 min-h-screen">
@@ -93,10 +101,6 @@
         class="flex items-center justify-center gap-2 bg-white border border-forest-200 hover:bg-forest-50 text-gray-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl transition-colors shadow-card flex-1 sm:flex-none">
         <i class="ti ti-download text-base"></i> <span class="whitespace-nowrap">Export CSV</span>
       </button>
-      <button onclick="aiAnalyze()"
-        class="flex items-center justify-center gap-2 bg-gold-400 hover:bg-yellow-500 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl transition-colors shadow-card flex-1 sm:flex-none">
-        <i class="ti ti-robot text-base"></i> <span class="whitespace-nowrap">Analisis AI</span>
-      </button>
     </div>
   </div>
 
@@ -122,16 +126,6 @@
       <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Tarik</p>
       <p id="st-tarik" class="text-base sm:text-lg font-bold text-gray-900 truncate">–</p>
     </div>
-  </div>
-
-  <!-- AI Analysis box -->
-  <div id="ai-box" class="hidden mb-5 bg-gradient-to-br from-forest-50 to-gold-50 border border-forest-200 rounded-2xl p-4 sm:p-5 shadow-card fade-up">
-    <div class="flex items-center gap-2 mb-3">
-      <i class="ti ti-robot text-forest-600 text-lg"></i>
-      <span class="font-bold text-sm text-gray-800">Analisis AI Gemini</span>
-      <button onclick="document.getElementById('ai-box').classList.add('hidden')" class="ml-auto text-gray-400 hover:text-red-500 transition-colors text-sm"><i class="ti ti-x"></i></button>
-    </div>
-    <div id="ai-text" class="text-sm text-gray-700 leading-relaxed"></div>
   </div>
 
   <!-- Search & Sort -->

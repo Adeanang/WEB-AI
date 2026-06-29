@@ -90,7 +90,7 @@ app.post('/api/siswa', async (req, res) => {
     .select()
     .single();
   if (error) {
-    console.error('❌ Supabase error (tambah siswa):', error);
+    console.error('Supabase error (tambah siswa):', error);
     if (error.code === '23505') return err(res, 'NIS sudah terdaftar', 400);
     return err(res, error.message);
   }
@@ -111,7 +111,7 @@ app.put('/api/siswa/:nis', async (req, res) => {
     .select()
     .single();
   if (error) {
-    console.error('❌ Supabase error (update siswa):', error);
+    console.error('Supabase error (update siswa):', error);
     if (error.code === '23505') return err(res, 'NIS sudah digunakan siswa lain', 400);
     return err(res, error.message);
   }
@@ -124,7 +124,7 @@ app.delete('/api/siswa/:nis', async (req, res) => {
     .delete()
     .eq('nis', req.params.nis);
   if (error) {
-    console.error('❌ Supabase error (hapus siswa):', error);
+    console.error('Supabase error (hapus siswa):', error);
     return err(res, error.message);
   }
   ok(res, { deleted: true });
@@ -161,7 +161,7 @@ app.post('/api/transaksi', async (req, res) => {
     .select()
     .single();
   if (error) {
-    console.error('❌ Supabase error (transaksi manual):', error);
+    console.error('Supabase error (transaksi manual):', error);
     return err(res, error.message);
   }
   ok(res, data);
@@ -185,7 +185,7 @@ app.post('/api/transaksi/bulk', async (req, res) => {
     .insert(rows)
     .select();
   if (error) {
-    console.error('❌ Supabase error (bulk):', error);
+    console.error('Supabase error (bulk):', error);
     return err(res, error.message);
   }
   ok(res, data);
@@ -283,43 +283,6 @@ Jawab pertanyaan guru dengan singkat, informatif, dan dalam bahasa Indonesia yan
   }
 });
 
-app.post('/api/ai/analisis', async (req, res) => {
-  const { data: rekap, error: dbError } = await supabase.from('rekap_siswa').select('*');
-  if (dbError) return err(res, 'Gagal ambil data rekap: ' + dbError.message);
-
-  const totalSaldo = rekap.reduce((s,x) => s + Number(x.saldo), 0);
-  const totalSetor = rekap.reduce((s,x) => s + Number(x.total_setor), 0);
-  const sudahAda   = rekap.filter(x => Number(x.saldo) > 0).length;
-  const summary    = rekap.map(s =>
-    `- ${s.nama}: setor Rp ${Number(s.total_setor).toLocaleString('id-ID')}, tarik Rp ${Number(s.total_tarik).toLocaleString('id-ID')}, saldo Rp ${Number(s.saldo).toLocaleString('id-ID')}`
-  ).join('\n');
-
-  const prompt = `Berikut data tabungan siswa kelas Pak Anang (${rekap.length} siswa total, ${sudahAda} sudah ada data):
-${summary}
-
-Total saldo kelas: Rp ${totalSaldo.toLocaleString('id-ID')}
-Total setor: Rp ${totalSetor.toLocaleString('id-ID')}
-
-Buat analisis singkat dalam 4 poin dengan emoji:
-1. Kondisi umum tabungan kelas
-2. Siswa dengan tabungan terbaik (jika ada data)
-3. Siswa yang belum ada data atau perlu perhatian
-4. Saran/motivasi untuk guru Pak Anang
-
-Gunakan bahasa Indonesia yang ramah dan mudah dibaca.`;
-
-  const model = genAI.getGenerativeModel({ model: GEMINI_MODEL });
-  try {
-    const result = await withRetry(() => model.generateContent(prompt));
-    ok(res, { analisis: result.response.text() });
-  } catch (e) {
-    const msg = isRetryableError(e)
-      ? 'Server Gemini sedang sibuk. Silakan coba lagi sebentar lagi.'
-      : 'Gemini analisis error: ' + e.message;
-    err(res, msg);
-  }
-});
-
 // ============================================================
 // Fallback → scan.html (MPA: tidak perlu wildcard SPA redirect)
 // ============================================================
@@ -332,7 +295,7 @@ app.get('/', (req, res) => {
 // ============================================================
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`✅ SiTabung AI server running → http://localhost:${PORT}`);
+  console.log(`SiTabung AI server running → http://localhost:${PORT}`);
 });
 
 module.exports = app;

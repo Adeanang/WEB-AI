@@ -88,23 +88,6 @@ function renderRekap() {
     </tr>`).join('');
 }
 
-// ── AI Analisis ───────────────────────────────────────────────
-async function aiAnalyze() {
-  const box = document.getElementById('ai-box');
-  const txt = document.getElementById('ai-text');
-  box.classList.remove('hidden');
-  txt.innerHTML = dotLoader('Menganalisis data kelas…');
-  try {
-    const data = await apiFetch('/api/ai/analisis', { method:'POST' });
-    txt.innerHTML = esc(data.analisis)
-      .replace(/\n/g,'<br>')
-      .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  } catch (e) {
-    txt.innerHTML = `<i class="ti ti-alert-triangle text-red-400"></i> ${esc(e.message)}`;
-    showToast(e.message, 'error');
-  }
-}
-
 // ── Riwayat transaksi ─────────────────────────────────────────
 async function lihatRiwayat(nis) {
   currentTrxNis = nis;
